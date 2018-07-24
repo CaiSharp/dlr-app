@@ -1,19 +1,17 @@
 <template>
-  <div id="app">
-    <router-view name="navbar"></router-view>
-    <router-view></router-view>
-  </div>
+    <div id="app">
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
+    export default {
+        data() {
+            return {}
+        }
     }
-  }
-}
 </script>
 
 <style lang="scss">
-  @import "sass/main";
+    @import "sass/main";
 </style>
