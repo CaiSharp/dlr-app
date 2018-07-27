@@ -4,20 +4,19 @@
             <div class="col s12 m6">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
-                        <p>{{selectedQuestion.answers[0].text}}</p>
+                        <p>{{question.answers[0].text}}</p>
                     </div>
-                    <router-link
-                            tag="button"
-                            :to="{name: 'info', params: {selectedQuestion}}"
-                            class="waves-effect waves-light btn-large"
-                            :selectedQuestion="selectedQuestion">That's me!
-                    </router-link>
+                    <button
+                            @click="showInfoChart"
+                            class="waves-effect waves-light btn-large">
+                        Click me!
+                    </button>
                 </div>
             </div>
             <div class="col s12 m6">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
-                        <p>{{selectedQuestion.answers[1].text}}</p>
+                        <p>{{question.answers[1].text}}</p>
                     </div>
                     <div class="card-action">
 
@@ -29,7 +28,7 @@
             <div class="col s12 m6">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
-                        <p>{{selectedQuestion.answers[2].text}}</p>
+                        <p>{{question.answers[2].text}}</p>
                     </div>
                     <div class="card-action">
                     </div>
@@ -38,7 +37,7 @@
             <div class="col s12 m6">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
-                        <p>{{selectedQuestion.answers[3].text}}</p>
+                        <p>{{question.answers[3].text}}</p>
                     </div>
                     <div class="card-action">
                     </div>
@@ -49,25 +48,23 @@
 </template>
 
 <script>
-    import {data} from '../../data/database'
+    import {mapGetters} from 'vuex'
 
     export default {
-        data(){
+        data() {
             return {
-                questionsArray: data,
-                selectedQuestion: undefined,
-                pastQuestions: []
+                id: this.$route.params.id,
+                question: undefined
             }
         },
         methods: {
-            pickRandomQuestion(questionsArray){
-                let rndQuestionId = Math.floor((Math.random() * questionsArray.length));
-                this.selectedQuestion = questionsArray[rndQuestionId];
-                this.pastQuestions.push(rndQuestionId);
-            }
+            ...mapGetters(['getAllQuestions']),
         },
-        beforeMount(){
-            this.pickRandomQuestion(this.questionsArray);
+        created() {
+
+        },
+        beforeMount() {
+            this.question = this.getAllQuestions()[this.id];
         }
     }
 </script>
