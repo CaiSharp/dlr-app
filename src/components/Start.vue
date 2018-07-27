@@ -29,10 +29,11 @@
             }
         },
         computed: {
+            ...mapGetters(['getAllQuestions'])
         },
         methods: {
             ...mapActions(['setQuestions']),
-            ...mapGetters(['getAllQuestions']),
+
             logStuff(){
                 console.log(this.questionsArray);
             },
@@ -47,7 +48,7 @@
             this.$http.get('http://localhost:3000/questions')
                 .then(res =>{
                     this.setQuestions(res.body);
-                    this.questionsArray = this.getAllQuestions();
+                    this.questionsArray = this.getAllQuestions;
                     this.pickRandomQuestion();
                 });
         },

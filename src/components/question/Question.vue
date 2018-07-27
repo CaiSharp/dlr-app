@@ -7,7 +7,6 @@
                         <p>{{question.answers[0].text}}</p>
                     </div>
                     <button
-                            @click="showInfoChart"
                             class="waves-effect waves-light btn-large">
                         Click me!
                     </button>
@@ -53,7 +52,7 @@
     export default {
         data() {
             return {
-                id: this.$route.params.id,
+                id: parseInt(this.$route.params.id),
                 question: undefined
             }
         },
@@ -61,7 +60,7 @@
             ...mapGetters(['getAllQuestions']),
         },
         created() {
-
+            console.log(this.id)
         },
         beforeMount() {
             this.question = this.getAllQuestions()[this.id];
