@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" v-if="question">
         <div class="row">
             <div class="col s12 m6">
                 <div class="card blue-grey darken-1">
@@ -47,23 +47,32 @@
 </template>
 
 <script>
+    import {mapActions} from 'vuex'
     import {mapGetters} from 'vuex'
 
     export default {
         data() {
             return {
                 id: parseInt(this.$route.params.id),
+                questionsArray: this.getAllQuestions,
                 question: undefined
             }
         },
-        methods: {
+        computed: {
             ...mapGetters(['getAllQuestions']),
         },
+        methods: {
+            ...mapActions(['setQuestions']),
+        },
         created() {
-            console.log(this.id)
+            this.$http.get('http://localhost:3000/questions')
+                .then(res => {
+                    this.setQuestions(res.body);
+                    this.questionsArray = this.getAllQuestions;
+                    this.question = this.questionsArray[this.id]
+                });
         },
         beforeMount() {
-            this.question = this.getAllQuestions()[this.id];
         }
     }
 </script>

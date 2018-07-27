@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        questions: []
+        questions: [],
     },
     mutations: {
         setLocalQuestions: (state, payload) => {
