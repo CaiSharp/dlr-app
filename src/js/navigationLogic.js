@@ -2,7 +2,6 @@ export function navigateToRndQuestion(){
 
     if(this.getAllQuestions.length > 0){
 
-
         let selectedQuestionIndex = Math.floor((Math.random() * this.getAllQuestions.length));
         let selectedQuestion = this.getAllQuestions[selectedQuestionIndex];
 
@@ -13,8 +12,6 @@ export function navigateToRndQuestion(){
         this.$router.push({name: 'question', params: {id: selectedQuestion.id}});
 
     }else{
-
-        console.log('no questions left');
         //SAVE TO SERVER, RESET && REPEAT
         this.$http.post('http://localhost:3000/', this.getPastQuestions)
             .then(()=>{
@@ -23,5 +20,5 @@ export function navigateToRndQuestion(){
 
                 this.$router.push({name: 'start'});
             });
-}
+    }
 }

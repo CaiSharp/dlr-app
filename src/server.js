@@ -17,6 +17,7 @@ app.listen(PORT || process.env.PORT, () =>
 
 app.get("/questions", (req,res)=>{
     jsonfile.readFile(DIRECTORY, (err, data)=>{
+        if (err) throw err;
         res.send(data);
     })
 });
@@ -24,7 +25,6 @@ app.get("/questions", (req,res)=>{
 app.post("/", (req,res)=>{
     jsonfile.writeFile(DIRECTORY, req.body, (err)=>{
         if (err) throw err;
-        console.log('Entry has been saved!');
         res.end();
     });
 });
