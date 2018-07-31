@@ -1,47 +1,35 @@
 <template>
     <div class="container" v-if="question">
         <div class="row">
-            <div class="col s12 m6">
+            <div class="col s12 m6" v-for="answer in question.answers">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
-                        <p>{{question.answers[0].text}}</p>
-                    </div>
-                    <button
-                            class="waves-effect waves-light btn-large">
-                        Click me!
-                    </button>
-                </div>
-            </div>
-            <div class="col s12 m6">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <p>{{question.answers[1].text}}</p>
+                        <p>{{answer.text}}</p>
+                        <br>
+                        <p>{{answer.clicked}}</p>
                     </div>
                     <div class="card-action">
+                        <button
+                                class="waves-effect waves-light btn-large"
+                                @click="increaseClickCounter(answer)">
+                            Click me!
+                        </button>
 
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col s12 m6">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <p>{{question.answers[2].text}}</p>
-                    </div>
-                    <div class="card-action">
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <p>{{question.answers[3].text}}</p>
-                    </div>
-                    <div class="card-action">
-                    </div>
-                </div>
-            </div>
+            <router-link
+                    tag="button"
+                    :to="{name: 'start'}"
+                    class="waves-effect waves-light btn-large">Backwards!
+            </router-link>
+            <button
+                    class="waves-effect waves-light btn-large"
+                    @click="navigateToRndQuestion">
+                Forwards!
+            </button>
         </div>
     </div>
 </template>
@@ -49,30 +37,37 @@
 <script>
     import {mapActions} from 'vuex'
     import {mapGetters} from 'vuex'
+    import {navigateToRndQuestion} from "../../js/navigationLogic";
 
     export default {
         data() {
             return {
-                id: parseInt(this.$route.params.id),
-                questionsArray: this.getAllQuestions,
+                id: undefined,
                 question: undefined
             }
         },
+        watch: {
+            '$route'(){
+                this.setupQuestion();
+            }
+        },
         computed: {
-            ...mapGetters(['getAllQuestions']),
+            ...mapGetters(['getAllQuestions','getPastQuestions']),
         },
         methods: {
-            ...mapActions(['setQuestions']),
+            ...mapActions(['initQuestions','markQuestionViewed','removeQuestion','setInitStatus','navigateNextQuestion']),
+            setupQuestion(){
+                this.id = this.$route.params.id;
+                this.question = this.getPastQuestions.find(el => el.id === this.id);
+            },
+            increaseClickCounter(answer){
+                answer.clicked++;
+            },
+            navigateToRndQuestion
         },
         created() {
-            this.$http.get('http://localhost:3000/questions')
-                .then(res => {
-                    this.setQuestions(res.body);
-                    this.questionsArray = this.getAllQuestions;
-                    this.question = this.questionsArray[this.id]
-                });
-        },
-        beforeMount() {
+            console.log('Question Component Initialized');
+            this.setupQuestion();
         }
     }
 </script>

@@ -2,14 +2,13 @@
     <div class="container">
         <br>
         <div class="col m12 center">
-            <router-link
-                    tag="button"
-                    :to="{name: 'question', params: {id: selectedQuestionId}}"
-                    class="waves-effect waves-light btn-large">Press Play
-            </router-link>
             <button
                     class="waves-effect waves-light btn-large"
                     @click="logStuff">Check Store
+            </button>
+            <button
+                    class="waves-effect waves-light btn-large"
+                    @click="navigateToRndQuestion">Next Question
             </button>
         </div>
     </div>
@@ -18,39 +17,35 @@
 <script>
     import {mapActions} from 'vuex'
     import {mapGetters} from 'vuex'
+    import {navigateToRndQuestion} from "../js/navigationLogic";
 
     export default {
         data(){
             return {
-                questionsArray: undefined,
-                selectedQuestion: undefined,
-                selectedQuestionId: undefined,
-                pastQuestions: []
+
             }
         },
         computed: {
-            ...mapGetters(['getAllQuestions'])
+            ...mapGetters(['getAllQuestions','getPastQuestions','getInitStatus'])
         },
         methods: {
-            ...mapActions(['setQuestions']),
+            ...mapActions(['initQuestions','markQuestionViewed','removeQuestion','setInitStatus','navigateNextQuestion']),
 
             logStuff(){
-                console.log(this.questionsArray);
+                console.log(this.getAllQuestions);
+                console.log(this.getPastQuestions);
             },
-            pickRandomQuestion(){
-                let rndQuestionId = Math.floor((Math.random() * this.questionsArray.length));
-                this.selectedQuestionId = rndQuestionId;
-                this.selectedQuestion = this.questionsArray[rndQuestionId];
-                this.pastQuestions.push(rndQuestionId);
-            }
+            navigateToRndQuestion
         },
         created(){
-            this.$http.get('http://localhost:3000/questions')
-                .then(res =>{
-                    this.setQuestions(res.body);
-                    this.questionsArray = this.getAllQuestions;
-                    this.pickRandomQuestion();
-                });
+            if(this.getInitStatus === false){
+                this.$http.get('http://localhost:3000/questions')
+                    .then(res =>{
+                        this.initQuestions(res.body);
+                        this.setInitStatus(true);
+                        console.warn(`---Server initialised: ${this.getInitStatus}---`);
+                    });
+            }
         },
         beforeMount(){
         }
