@@ -1,3 +1,5 @@
+import {saveData} from "./api";
+
 export function navigateToRndQuestion(){
 
     if(this.getAllQuestions.length > 0){
@@ -13,7 +15,7 @@ export function navigateToRndQuestion(){
 
     }else{
         //SAVE TO SERVER, RESET && REPEAT
-        this.$http.post('http://localhost:3000/', this.getPastQuestions)
+        return saveData(this.getPastQuestions)
             .then(()=>{
                 this.emptyPastQuestionArray();
                 this.setInitStatus(false);

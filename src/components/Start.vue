@@ -20,6 +20,7 @@
     import {actions} from "../store/actionsNames";
     import {getters} from "../store/gettersNames";
     import {navigateToRndQuestion} from "../js/navigationLogic";
+    import {getData} from "../js/api";
 
     export default {
         data(){
@@ -41,7 +42,7 @@
         },
         created(){
             if(this.getInitStatus === false){
-                this.$http.get('http://localhost:3000/questions')
+                return getData()
                     .then(res =>{
                         this.initQuestions(res.body);
                         this.setInitStatus(true);
