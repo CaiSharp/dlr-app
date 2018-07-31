@@ -16,26 +16,33 @@ export const store = new Vuex.Store({
         setLocalQuestions: (state, payload) => {
             state.questions = payload;
         },
+        removeQuestion: (state, payload) => {
+            state.questions.splice(payload, 1);
+        },
         pushPastQuestionArray: (state, payload) => {
             state.pastQuestions.push(payload);
         },
-        removeQuestion: (state, payload) => {
-            state.questions.splice(payload, 1);
-        }
+        emptyPastQuestionArray: (state) => {
+            state.pastQuestions = [];
+        },
+
     },
     actions: {
+        setInitStatus: ({commit}, payload) => {
+            commit('setInitStatus', payload);
+        },
         initQuestions: ({commit}, payload) => {
             commit('setLocalQuestions', payload);
-        },
-        markQuestionViewed: ({commit}, payload) => {
-            commit('pushPastQuestionArray', payload);
         },
         removeQuestion: ({commit}, payload) => {
             commit('removeQuestion', payload);
         },
-        setInitStatus: ({commit}, payload) => {
-            commit('setInitStatus', payload);
+        markQuestionViewed: ({commit}, payload) => {
+            commit('pushPastQuestionArray', payload);
         },
+        emptyPastQuestionArray: ({commit}) => {
+            commit('emptyPastQuestionArray');
+        }
     },
     getters: {
         getAllQuestions: state => {

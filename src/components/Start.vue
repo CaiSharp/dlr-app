@@ -17,6 +17,8 @@
 <script>
     import {mapActions} from 'vuex'
     import {mapGetters} from 'vuex'
+    import {actions} from "../store/actionsNames";
+    import {getters} from "../store/gettersNames";
     import {navigateToRndQuestion} from "../js/navigationLogic";
 
     export default {
@@ -26,10 +28,10 @@
             }
         },
         computed: {
-            ...mapGetters(['getAllQuestions','getPastQuestions','getInitStatus'])
+            ...mapGetters(getters)
         },
         methods: {
-            ...mapActions(['initQuestions','markQuestionViewed','removeQuestion','setInitStatus','navigateNextQuestion']),
+            ...mapActions(actions),
 
             logStuff(){
                 console.log(this.getAllQuestions);

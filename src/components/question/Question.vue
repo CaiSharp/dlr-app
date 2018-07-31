@@ -37,6 +37,8 @@
 <script>
     import {mapActions} from 'vuex'
     import {mapGetters} from 'vuex'
+    import {actions} from "../../store/actionsNames";
+    import {getters} from "../../store/gettersNames";
     import {navigateToRndQuestion} from "../../js/navigationLogic";
 
     export default {
@@ -52,10 +54,10 @@
             }
         },
         computed: {
-            ...mapGetters(['getAllQuestions','getPastQuestions']),
+            ...mapGetters(getters),
         },
         methods: {
-            ...mapActions(['initQuestions','markQuestionViewed','removeQuestion','setInitStatus','navigateNextQuestion']),
+            ...mapActions(actions),
             setupQuestion(){
                 this.id = this.$route.params.id;
                 this.question = this.getPastQuestions.find(el => el.id === this.id);
@@ -66,7 +68,7 @@
             navigateToRndQuestion
         },
         created() {
-            console.log('Question Component Initialized');
+            //ROUTE OBJECT DOESN'T CHANGE ON INITIALIZE, NEEDS TO BE CALLED HERE
             this.setupQuestion();
         }
     }

@@ -20,3 +20,11 @@ app.get("/questions", (req,res)=>{
         res.send(data);
     })
 });
+
+app.post("/", (req,res)=>{
+    jsonfile.writeFile(DIRECTORY, req.body, (err)=>{
+        if (err) throw err;
+        console.log('Entry has been saved!');
+        res.end();
+    });
+});
