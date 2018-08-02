@@ -1,5 +1,6 @@
 export const getters = [
     'getAllQuestions',
     'getPastQuestions',
-    'getInitStatus'
+    'getInitStatus',
+    'getFinishedStatus'
 ];

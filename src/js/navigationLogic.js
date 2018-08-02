@@ -14,16 +14,19 @@ export function navigateToRndQuestion(){
         this.$router.push({name: 'question', params: {id: selectedQuestion.id}});
 
     }else{
-        //RENDER ALL QUESTIONS
-
-
-        //SAVE TO SERVER, RESET && REPEAT
-        return saveData(this.getPastQuestions)
-            .then(()=>{
-                this.emptyPastQuestionArray();
-                this.setInitStatus(false);
-
-                this.$router.push({name: 'start'});
-            });
+        //SET TO RENDER MULTI DOUGHNUT CHART
+        this.setFinishedStatus(true);
     }
+}
+
+//SAVE TO SERVER, RESET && REPEAT
+export function saveAndReturn() {
+    return saveData(this.getPastQuestions)
+        .then(()=>{
+            this.emptyPastQuestionArray();
+            this.setInitStatus(false);
+            this.setFinishedStatus(false);
+
+            this.$router.push({name: 'start'});
+        });
 }

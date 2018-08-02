@@ -37,12 +37,22 @@ export default {
                             let currentValue = dataset.data[tooltipItem.index];
                             let percentage = Math.floor(((currentValue/total) * 100)+0.5);
                             return `${label} : ${percentage}%`;
+                        },
+                        title(tooltipItem, data){
+                           let datasetIndex = tooltipItem[0].datasetIndex;
+                           return data.datasets[datasetIndex].label;
                         }
-                    }
+                    },
+                    titleFontSize: 18,
+                    titleSpacing: 10,
+                    bodyFontSize: 22,
+                    bodySpacing: 10,
+                    yPadding: 12,
+                    xPadding: 20,
+                    caretSize: 12
                 }
             },
             dataCollection: [],
-            labelCollection: []
         }
     },
     props: ['questions'],
@@ -64,7 +74,7 @@ export default {
                         data: this.createDataEntries(el.answers),
                         backgroundColor: ['#55D8FE', '#FF8373', '#A3A0FB', '#FFDA83'],
                         label: el.question,
-                        labels: this.createLabels(el.answers)
+                        labels: this.createLabels(el.answers),
                     }
                 );
             });

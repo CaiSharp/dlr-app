@@ -36,7 +36,12 @@ export default {
                             let percentage = Math.floor(((currentValue/total) * 100)+0.5);
                             return `${data.labels[dataset.data.indexOf(currentValue)]} : ${percentage}%`;
                         },
-                    }
+                    },
+                    bodyFontSize: 22,
+                    bodySpacing: 10,
+                    yPadding: 12,
+                    xPadding: 20,
+                    caretSize: 12
                 }
             }
         }

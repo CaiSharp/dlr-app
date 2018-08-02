@@ -6,12 +6,16 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
         initialized: false,
+        finished: false,
         questions: [],
         pastQuestions: [],
     },
     mutations: {
         setInitStatus: (state, payload) => {
             state.initialized = payload;
+        },
+        setFinishedStatus: (state, payload) => {
+            state.finished = payload;
         },
         setLocalQuestions: (state, payload) => {
             state.questions = payload;
@@ -30,6 +34,9 @@ export const store = new Vuex.Store({
     actions: {
         setInitStatus: ({commit}, payload) => {
             commit('setInitStatus', payload);
+        },
+        setFinishedStatus: ({commit}, payload) => {
+            commit('setFinishedStatus', payload);
         },
         initQuestions: ({commit}, payload) => {
             commit('setLocalQuestions', payload);
@@ -53,6 +60,9 @@ export const store = new Vuex.Store({
         },
         getInitStatus: state => {
             return state.initialized;
+        },
+        getFinishedStatus: state => {
+            return state.finished;
         }
     }
 });
