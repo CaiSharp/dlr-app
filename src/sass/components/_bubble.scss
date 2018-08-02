@@ -18,11 +18,13 @@
             margin-top: 5rem;
             margin-bottom: 5rem;
             font-size: 3rem;
+            border: 2px solid $color-tertiary;
         }
         &-text{
             font-size: 1.8rem;
             max-height: 45rem;
             overflow-y: scroll;
+            border: 2px solid $color-primary;
         }
     }
 }
