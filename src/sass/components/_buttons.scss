@@ -1,5 +1,26 @@
 .btn-next{
     float: right;
+    margin-right: 0.75rem;
+    padding: 0 3rem;
+    border-radius: 1.5rem;
+    background-color: transparent;
+    border: 2px solid $color-white;
+    font-size: 2rem;
+    @include box-shadow-default;
+
+    &:hover,&:active{
+        background-color: transparent;
+        transform: translateY(-1px);
+        @include box-shadow-hover;
+    }
+    &:link,&:visited,&:focus{
+        background-color: transparent;
+    }
+}
+
+.btn-info{
+    float: right;
+    margin-right: 0.75rem;
     padding: 0 3rem;
     border-radius: 1.5rem;
     background-color: transparent;

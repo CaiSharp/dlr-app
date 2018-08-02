@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row" v-if="!getFinishedStatus">
+        <div class="row" v-if="!getFinishedStatus && !info">
             <div class="col s12 m12">
                 <div class="bubble bubble--question">
                     <p>{{question.question}}</p>
@@ -12,7 +12,19 @@
             <app-question-answer :question="question" @answered="questionAnswered"></app-question-answer>
         </div>
 
-        <div class="row" v-if="answered && !getFinishedStatus">
+        <div class="row" v-if="info && !getFinishedStatus">
+            <div class="col sm12 m12">
+                <div class="bubble bubble--info-headline">
+                    <h3>Wusstest du schon..?</h3>
+                </div>
+                <div class="bubble bubble--info-text">
+                    <p>{{question.infoText}}</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row" v-if="answered && !getFinishedStatus && !info">
             <div class="col m12 s12">
                 <app-doughnut-chart :question="question"></app-doughnut-chart>
             </div>
@@ -40,7 +52,13 @@
                     v-if="answered && !getFinishedStatus"
                     class="btn-large btn-next"
                     @click="navigateToRndQuestion">
-                Next!
+                Next
+            </button>
+            <button
+                    v-if="answered && !getFinishedStatus"
+                    class="btn-large btn-info"
+                    @click="toggleInfo">
+                Info
             </button>
         </div>
     </div>
@@ -63,6 +81,7 @@
                 id: undefined,
                 question: undefined,
                 answered: false,
+                info: false
             }
         },
         watch: {
@@ -82,9 +101,13 @@
                 this.id = this.$route.params.id;
                 this.question = this.getPastQuestions.find(el => el.id === this.id);
                 this.answered = false;
+                this.info = false;
             },
             questionAnswered(){
                 this.answered = true;
+            },
+            toggleInfo(){
+                this.info = !this.info;
             },
             navigateToRndQuestion,
             saveAndReturn,
