@@ -8,11 +8,11 @@
                 "clicked": 4
             },
             {
-                "text": "1h",
+                "text": "ca. 1h",
                 "clicked": 1
             },
             {
-                "text": "30min",
+                "text": "ca. 30min",
                 "clicked": 1
             },
             {
@@ -24,7 +24,7 @@
     },
     {
         "id": 1,
-        "question": "Wie oft tankst du pro Monat?",
+        "question": "Wie oft musst du tanken pro Monat?",
         "answers": [
             {
                 "text": "Mehr als 5x",
@@ -58,11 +58,126 @@
                 "clicked": 1
             },
             {
-                "text": "Uber 500",
+                "text": "Ueber 500",
                 "clicked": 1
             },
             {
                 "text": "Weniger als 500!",
+                "clicked": 2
+            }
+        ],
+        "totalAnswered": 0
+    },
+    {
+        "id": 3,
+        "question": "Wieviele Menschen ueber 70 fahren zur Zeit Auto",
+        "answers": [
+            {
+                "text": "Ueber 30000",
+                "clicked": 3
+            },
+            {
+                "text": "Ueber 20000",
+                "clicked": 1
+            },
+            {
+                "text": "Uber 5000",
+                "clicked": 1
+            },
+            {
+                "text": "Weniger als 5000!",
+                "clicked": 2
+            }
+        ],
+        "totalAnswered": 0
+    },
+    {
+        "id": 4,
+        "question": "Wieviel Menschen koennten mobil werden durch autonome Autos?",
+        "answers": [
+            {
+                "text": "Ueber 15000",
+                "clicked": 3
+            },
+            {
+                "text": "Ueber 8000",
+                "clicked": 1
+            },
+            {
+                "text": "Uber 5000",
+                "clicked": 1
+            },
+            {
+                "text": "Weniger als 5000!",
+                "clicked": 2
+            }
+        ],
+        "totalAnswered": 0
+    },
+    {
+        "id": 5,
+        "question": "Koennen autonome Autos bei Global Warming helfen?",
+        "answers": [
+            {
+                "text": "Ja",
+                "clicked": 3
+            },
+            {
+                "text": "Nein",
+                "clicked": 1
+            },
+            {
+                "text": "Vielleicht",
+                "clicked": 1
+            },
+            {
+                "text": "Mir doch egal",
+                "clicked": 2
+            }
+        ],
+        "totalAnswered": 0
+    },
+    {
+        "id": 6,
+        "question": "Wieviele Kosten fallen bei deinem Auto monatlich an?",
+        "answers": [
+            {
+                "text": "Ueber 1000$",
+                "clicked": 3
+            },
+            {
+                "text": "Ueber 100$",
+                "clicked": 1
+            },
+            {
+                "text": "Unter 100$",
+                "clicked": 1
+            },
+            {
+                "text": "Keine",
+                "clicked": 2
+            }
+        ],
+        "totalAnswered": 0
+    },
+    {
+        "id": 7,
+        "question": "Wie oft stehst du monatlich im Stau?",
+        "answers": [
+            {
+                "text": "Mehr als 10x",
+                "clicked": 3
+            },
+            {
+                "text": "Mehr als 5x",
+                "clicked": 1
+            },
+            {
+                "text": "Nicht mehr als ein par mal",
+                "clicked": 1
+            },
+            {
+                "text": "Nie!",
                 "clicked": 2
             }
         ],

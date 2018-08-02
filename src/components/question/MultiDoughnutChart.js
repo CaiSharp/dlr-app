@@ -20,12 +20,13 @@ export default {
                 layout: {
                     padding: {
                         bottom: 0,
-                        top: 0
+                        top: 50,
+                        right: 50
                     },
                     marginBottom: 50
                 },
                 responsive: true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: true,
                 tooltips: {
                     callbacks: {
                         label(tooltipItem, data) {
@@ -49,7 +50,8 @@ export default {
                     bodySpacing: 10,
                     yPadding: 12,
                     xPadding: 20,
-                    caretSize: 12
+                    caretSize: 12,
+                    backgroundColor: 'rgba(0,0,0,1)'
                 }
             },
             dataCollection: [],

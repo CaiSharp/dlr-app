@@ -1,14 +1,5 @@
 <template>
     <div class="container">
-
-        <div class="row" v-if="getFinishedStatus">
-            <div class="col s12 m12">
-                <div class="bubble bubble--question">
-                    <p>Endresultat</p>
-                </div>
-            </div>
-        </div>
-
         <div class="row" v-if="!getFinishedStatus">
             <div class="col s12 m12">
                 <div class="bubble bubble--question">
@@ -18,13 +9,7 @@
         </div>
 
         <div class="row" v-if="!answered && !getFinishedStatus">
-            <div v-for="(answer,index) in question.answers">
-                <div :class="['col', 's12', returnAnswerClass(index)]">
-                    <div :class="['card-panel','card-panel-' + index]" @click="increaseClickCounter(answer)">
-                        <p class="card-answer">{{answer.text}}</p>
-                    </div>
-                </div>
-            </div>
+            <app-question-answer :question="question" @answered="questionAnswered"></app-question-answer>
         </div>
 
         <div class="row" v-if="answered && !getFinishedStatus">
@@ -34,23 +19,28 @@
         </div>
 
         <div class="row" v-if="getFinishedStatus">
-            <div class="col m12 s12">
-                <app-multi-doughnut-chart :questions="this.getPastQuestions"></app-multi-doughnut-chart>
+            <div class="text--result-info">
+                <p>Klick die Balken fuer mehr Infos</p>
+            </div>
+            <div class="canvas--container">
+                <div class="col m12 s12">
+                    <app-multi-doughnut-chart :questions="this.getPastQuestions"></app-multi-doughnut-chart>
+                </div>
+                <button
+                        v-if="getFinishedStatus"
+                        class="btn-large btn-finish"
+                        @click="saveAndReturn()">
+                    Finish!
+                </button>
             </div>
         </div>
 
-        <div class="row" v-if="answered && !getFinishedStatus">
+        <div class="row">
             <button
+                    v-if="answered && !getFinishedStatus"
                     class="btn-large btn-next"
                     @click="navigateToRndQuestion">
                 Next!
-            </button>
-        </div>
-        <div class="row" v-if="getFinishedStatus">
-            <button
-                    class="btn-large btn-next"
-                    @click="saveAndReturn()">
-                Finish!
             </button>
         </div>
     </div>
@@ -65,6 +55,7 @@
     import {saveAndReturn} from "../../js/navigationLogic";
     import DoughnutChart from './DoughnutChart'
     import MultiDoughnutChart from './MultiDoughnutChart'
+    import QuestionAnswer from './QuestionAnswers.vue'
 
     export default {
         data() {
@@ -92,33 +83,16 @@
                 this.question = this.getPastQuestions.find(el => el.id === this.id);
                 this.answered = false;
             },
-            increaseClickCounter(answer){
-                answer.clicked++;
+            questionAnswered(){
                 this.answered = true;
             },
             navigateToRndQuestion,
             saveAndReturn,
-            returnAnswerClass(index){
-                let big = 'm7';
-                let small = 'm5';
-
-                switch (index) {
-                    case 0:
-                        return small;
-                    case 1:
-                        return big;
-                    case 2:
-                        return big;
-                    case 3:
-                        return small;
-                    default:
-                        break;
-                }
-            }
         },
         components:{
             appDoughnutChart: DoughnutChart,
-            appMultiDoughnutChart: MultiDoughnutChart
+            appMultiDoughnutChart: MultiDoughnutChart,
+            appQuestionAnswer: QuestionAnswer
         },
         created() {
             //ROUTE OBJECT DOESN'T CHANGE ON INITIALIZE, NEEDS TO BE CALLED HERE

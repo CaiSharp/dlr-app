@@ -14,7 +14,7 @@
     }
     &-0{
         background-color: $color-primary;
-        &:hover{background-color: darken($color-primary,10)}
+        &:hover{background-color: darken($color-primary,15)}
     }
     &-1{
         background-color: $color-secondary;

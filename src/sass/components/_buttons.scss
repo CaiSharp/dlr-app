@@ -17,6 +17,29 @@
     }
 }
 
+.btn-finish{
+    float: right;
+    position: absolute;
+    right: 0;
+    margin-top: -4rem;
+    padding: 0 3rem;
+    border-radius: 1.5rem;
+    background-color: transparent;
+    border: 2px solid $color-white;
+    font-size: 2rem;
+    @include box-shadow-default;
+    transform: translateY(1250%);
+    z-index: 1;
+
+    &:hover,&:active{
+        background-color: transparent;
+        @include box-shadow-hover;
+    }
+    &:link,&:visited,&:focus{
+        background-color: transparent;
+    }
+}
+
 .btn-start{
     padding: 0 3rem;
     border-radius: 1.5rem;
