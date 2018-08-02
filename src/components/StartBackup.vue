@@ -1,7 +1,17 @@
 <template>
     <div class="container">
         <br>
-        <button class="btn-large btn-start" @click="navigateToRndQuestion">Play</button>
+        <div class="col m12 center">
+            <button
+                    class="waves-effect waves-light btn-large"
+                    @click="logStuff">Check Store
+            </button>
+            <p>text</p>
+            <button
+                    class="waves-effect waves-light btn-large"
+                    @click="navigateToRndQuestion">Next Question
+            </button>
+        </div>
     </div>
 </template>
 
@@ -14,12 +24,22 @@
     import {getData} from "../js/api";
 
     export default {
+        data(){
+            return {
+
+            }
+        },
         computed: {
             ...mapGetters(getters)
         },
         methods: {
             ...mapActions(actions),
-            navigateToRndQuestion,
+
+            logStuff(){
+                console.log(this.getAllQuestions);
+                console.log(this.getPastQuestions);
+            },
+            navigateToRndQuestion
         },
         created(){
             if(this.getInitStatus === false){
@@ -30,6 +50,8 @@
                         console.warn(`---Server initialised: ${this.getInitStatus}---`);
                     });
             }
+        },
+        beforeMount(){
         }
     }
 </script>

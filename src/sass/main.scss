@@ -1,3 +1,10 @@
+//MIXINS
+@import "mixins/centerblock";
+@import "mixins/centerEleAbs";
+@import "mixins/clearfix";
+@import "mixins/fontface";
+@import "mixins/box-shadow";
+
 //BASE
 @import "base/animation";
 @import "base/base";
@@ -8,14 +15,11 @@
 @import "variables/colors";
 
 //COMPONENTS
+@import "components/buttons";
+@import "components/card";
+@import "components/bubble";
 
 //MODULES
 
 //PAGES
 @import "pages/start";
-
-//MIXINS
-@import "mixins/centerblock";
-@import "mixins/centerEleAbs";
-@import "mixins/clearfix";
-@import "mixins/fontface";

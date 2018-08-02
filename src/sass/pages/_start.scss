@@ -1,3 +1,7 @@
 body{
-    background: #333;
+    background: $color-bg;
+
+    .btn-start{
+        @include centerEleAbs;
+    }
 }

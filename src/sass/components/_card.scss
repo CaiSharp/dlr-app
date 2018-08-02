@@ -1,0 +1,36 @@
+.card-panel{
+    position: relative;
+    border-radius: 1.5rem;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: $color-text;
+    min-height: 20rem;
+    @include box-shadow-default;
+
+    &:hover{
+        cursor: pointer;
+        @include box-shadow-hover;
+    }
+    &-0{
+        background-color: $color-primary;
+        &:hover{background-color: darken($color-primary,10)}
+    }
+    &-1{
+        background-color: $color-secondary;
+        &:hover{background-color: darken($color-secondary,5)}
+    }
+    &-2{
+        background-color: $color-tertiary;
+        &:hover{background-color: darken($color-tertiary,5)}
+    }
+    &-3{
+        background-color: $color-quaternary;
+        &:hover{background-color: darken($color-quaternary,5)}
+    }
+}
+
+.card-answer{
+    @include centerEleAbs;
+}
+

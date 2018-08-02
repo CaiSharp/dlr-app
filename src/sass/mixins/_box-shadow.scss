@@ -1,0 +1,6 @@
+@mixin box-shadow-default{
+    box-shadow: 0 2px 6px 0 $color-black;
+}
+@mixin box-shadow-hover{
+    box-shadow: 0 4px 8px 0 $color-black;
+}

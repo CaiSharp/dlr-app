@@ -1,34 +1,23 @@
 <template>
     <div class="container">
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="bubble bubble--question">
+                    <p class="white-text">{{question.question}}</p>
+                </div>
+            </div>
+        </div>
         <div class="row" v-if="!answered">
-            <div class="col s12 m6" v-for="answer in question.answers">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <p>{{answer.text}}</p>
-                        <br>
-                        <p>{{answer.clicked}}</p>
-                    </div>
-                    <div class="card-action">
-                        <button
-                                class="waves-effect waves-light btn-large"
-                                @click="increaseClickCounter(answer)">
-                            Click me!
-                        </button>
-
+            <div v-for="(answer,index) in question.answers">
+                <div :class="['col', 's12', returnAnswerClass(index)]">
+                    <div :class="['card-panel','card-panel-' + index]" @click="increaseClickCounter(answer)">
+                        <p class="card-answer">{{answer.text}}</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row" v-if="answered">
-            <div class="col s12 m6" v-for="answer in question.answers">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <p>{{answer.text}}</p>
-                        <br>
-                        <p>{{answer.clicked}}</p>
-                    </div>
-                </div>
-            </div>
+            <app-chart :question="question"></app-chart>
         </div>
         <div class="row" v-if="answered">
             <router-link
@@ -51,6 +40,7 @@
     import {actions} from "../../store/actionsNames";
     import {getters} from "../../store/gettersNames";
     import {navigateToRndQuestion} from "../../js/navigationLogic";
+    import Chart from './Chart.js'
 
     export default {
         data() {
@@ -80,6 +70,26 @@
                 this.answered = true;
             },
             navigateToRndQuestion,
+            returnAnswerClass(index){
+                let big = 'm7';
+                let small = 'm5';
+
+                switch (index) {
+                    case 0:
+                        return small;
+                    case 1:
+                        return big;
+                    case 2:
+                        return big;
+                    case 3:
+                        return small;
+                    default:
+                        break;
+                }
+            }
+        },
+        components:{
+            appChart: Chart,
         },
         created() {
             //ROUTE OBJECT DOESN'T CHANGE ON INITIALIZE, NEEDS TO BE CALLED HERE
