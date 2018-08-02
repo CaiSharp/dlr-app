@@ -14,6 +14,9 @@ export function navigateToRndQuestion(){
         this.$router.push({name: 'question', params: {id: selectedQuestion.id}});
 
     }else{
+        //RENDER ALL QUESTIONS
+
+
         //SAVE TO SERVER, RESET && REPEAT
         return saveData(this.getPastQuestions)
             .then(()=>{

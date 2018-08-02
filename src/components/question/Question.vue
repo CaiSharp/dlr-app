@@ -3,10 +3,11 @@
         <div class="row">
             <div class="col s12 m12">
                 <div class="bubble bubble--question">
-                    <p class="white-text">{{question.question}}</p>
+                    <p>{{question.question}}</p>
                 </div>
             </div>
         </div>
+
         <div class="row" v-if="!answered">
             <div v-for="(answer,index) in question.answers">
                 <div :class="['col', 's12', returnAnswerClass(index)]">
@@ -16,19 +17,24 @@
                 </div>
             </div>
         </div>
+
         <div class="row" v-if="answered">
-            <app-chart :question="question"></app-chart>
+            <div class="col m12 s12">
+                <app-doughnut-chart :question="question"></app-doughnut-chart>
+            </div>
         </div>
+
         <div class="row" v-if="answered">
-            <router-link
-                    tag="button"
-                    :to="{name: 'start'}"
-                    class="waves-effect waves-light btn-large">Home!
-            </router-link>
+            <div class="col m12 s12">
+                <app-multi-doughnut-chart :questions="this.getPastQuestions"></app-multi-doughnut-chart>
+            </div>
+        </div>
+
+        <div class="row" v-if="answered">
             <button
-                    class="waves-effect waves-light btn-large"
+                    class="btn-large btn-next"
                     @click="navigateToRndQuestion">
-                Forward!
+                Next!
             </button>
         </div>
     </div>
@@ -40,7 +46,8 @@
     import {actions} from "../../store/actionsNames";
     import {getters} from "../../store/gettersNames";
     import {navigateToRndQuestion} from "../../js/navigationLogic";
-    import Chart from './Chart.js'
+    import DoughnutChart from './DoughnutChart'
+    import MultiDoughnutChart from './MultiDoughnutChart'
 
     export default {
         data() {
@@ -89,7 +96,8 @@
             }
         },
         components:{
-            appChart: Chart,
+            appDoughnutChart: DoughnutChart,
+            appMultiDoughnutChart: MultiDoughnutChart
         },
         created() {
             //ROUTE OBJECT DOESN'T CHANGE ON INITIALIZE, NEEDS TO BE CALLED HERE

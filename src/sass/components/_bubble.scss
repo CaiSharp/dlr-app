@@ -5,6 +5,7 @@
     border-bottom-right-radius:  3.5rem;
     padding: 2rem 4rem;
     font-size: 3rem;
+    color: $color-white;
     @include box-shadow-default;
 
     &--question{
