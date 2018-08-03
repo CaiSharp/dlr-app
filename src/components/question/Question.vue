@@ -12,14 +12,19 @@
         </div>
 
         <div class="row" v-if="info && !getFinishedStatus">
-            <div class="col sm12 m12">
+            <div class="col s12 m12">
                 <div class="bubble bubble--info-headline">
                     <h3>Wusstest du schon..?</h3>
                 </div>
-                <div class="bubble bubble--info-text">
-                    <p>{{question.infoText}}</p>
-                </div>
 
+                <div class="col s6 m6">
+                    <app-doughnut-chart :question="question"></app-doughnut-chart>
+                </div>
+                <div class="col s6 m6">
+                    <div class="bubble bubble--info-text">
+                        <p>{{question.infoText}}</p>
+                    </div>
+                </div>
             </div>
         </div>
 
