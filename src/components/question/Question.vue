@@ -31,9 +31,6 @@
         </div>
 
         <div class="row" v-if="getFinishedStatus">
-            <div class="text--result-info">
-                <p>Klick die Balken fuer mehr Infos</p>
-            </div>
             <div class="canvas--container">
                 <div class="col m12 s12">
                     <app-multi-doughnut-chart :questions="this.getPastQuestions"></app-multi-doughnut-chart>

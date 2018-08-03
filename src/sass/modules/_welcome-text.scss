@@ -1,0 +1,49 @@
+.welcome--container {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: $color-white;
+    text-transform: uppercase;
+    font-size:3.6rem;
+    font-weight:bold;
+    display:block;
+    margin: 0 auto;
+}
+
+#flip {
+    height:5rem;
+    overflow:hidden;
+}
+
+#flip > div > div {
+    color: $color-white;
+    height:4.5rem;
+    margin-bottom:4.5rem;
+    display:inline-block;
+}
+
+#flip div:first-child {
+    animation: show 5s linear infinite;
+}
+
+#flip div div {
+    color: $color-primary;
+}
+#flip div:first-child div {
+    color: $color-secondary;
+}
+#flip div:last-child div {
+    color: $color-quaternary;
+}
+
+@keyframes show {
+    0% {margin-top:-27rem;}
+    5% {margin-top:-18rem;}
+    33% {margin-top:-18rem;}
+    38% {margin-top:-9rem;}
+    66% {margin-top:-9rem;}
+    71% {margin-top:0;}
+    99.99% {margin-top:0;}
+    100% {margin-top:-27rem;}
+}

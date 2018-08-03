@@ -1,8 +1,18 @@
 <template>
-    <div class="container">
+    <div class="welcome--container">
+        <div id=container>
+            Kann autonomes fahren...
+            <div id=flip>
+                <div><div>Sicherer</div></div>
+                <div><div>Billiger</div></div>
+                <div><div>Umweltfreundlicher</div></div>
+            </div>
+            Sein?
+        </div>
         <br>
         <button class="btn-large btn-start" @click="navigateToRndQuestion">Play</button>
     </div>
+
 </template>
 
 <script>

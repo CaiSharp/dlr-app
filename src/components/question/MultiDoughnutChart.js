@@ -5,6 +5,14 @@ export default {
     data () {
         return {
             options: {
+                title: {
+                    display: true,
+                    text: 'Touch Me',
+                    position: 'left',
+                    fontColor: 'white',
+                    fontSize: '30',
+                    fontFamily: 'Tajawal',
+                },
                 legend: {
                     labels:{
                         fontColor: 'white',
