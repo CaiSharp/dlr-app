@@ -62,13 +62,16 @@
 }
 
 .btn-start{
-    margin-top: 12rem;
+    margin: 12rem auto 0 auto;
+    display: block;
     padding: 0 3rem;
     border-radius: 1.5rem;
     background-color: transparent;
     border: 2px solid $color-primary;
     font-size: 2rem;
     @include box-shadow-default;
+    -webkit-animation: breathing 7s ease-out infinite normal;
+    animation: breathing 7s ease-out infinite normal;
 
     &:hover,&:active{
         background-color: transparent;

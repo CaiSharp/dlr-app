@@ -81,7 +81,7 @@
             }
         },
         watch: {
-            '$route'(){
+            '$route'() {
                 this.setupQuestion();
             }
         },
@@ -90,25 +90,25 @@
         },
         methods: {
             ...mapActions(actions),
-            rerouteNotInit(){
+            rerouteNotInit() {
                 this.$router.push({name: 'start'});
             },
-            setupQuestion(){
+            setupQuestion() {
                 this.id = this.$route.params.id;
                 this.question = this.getPastQuestions.find(el => el.id === this.id);
                 this.answered = false;
                 this.info = false;
             },
-            questionAnswered(){
+            questionAnswered() {
                 this.answered = true;
             },
-            toggleInfo(){
+            toggleInfo() {
                 this.info = !this.info;
             },
             navigateToRndQuestion,
             saveAndReturn,
         },
-        components:{
+        components: {
             appDoughnutChart: DoughnutChart,
             appMultiDoughnutChart: MultiDoughnutChart,
             appQuestionAnswer: QuestionAnswer
@@ -117,7 +117,7 @@
             //ROUTE OBJECT DOESN'T CHANGE ON INITIALIZE, NEEDS TO BE CALLED HERE
             this.setupQuestion();
 
-            if(this.question === undefined){
+            if (this.question === undefined) {
                 this.rerouteNotInit();
             }
         }
