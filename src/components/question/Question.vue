@@ -7,9 +7,8 @@
                 </div>
             </div>
         </div>
-
         <div class="row" v-if="!answered && !getFinishedStatus">
-            <app-question-answer :question="question" @answered="questionAnswered"></app-question-answer>
+                <app-question-answer :question="question" @answered="questionAnswered"></app-question-answer>
         </div>
 
         <div class="row" v-if="info && !getFinishedStatus">

@@ -1,8 +1,8 @@
 <template>
-    <div class="welcome--container">
-        <div id=container>
+    <div class="container">
+        <div class="welcome--container">
             Kann autonomes fahren...
-            <div id=flip>
+            <div class="welcome--animation">
                 <div><div>Sicherer</div></div>
                 <div><div>Billiger</div></div>
                 <div><div>Umweltfreundlicher</div></div>
@@ -12,7 +12,6 @@
         <br>
         <button class="btn-large btn-start" @click="navigateToRndQuestion">Play</button>
     </div>
-
 </template>
 
 <script>

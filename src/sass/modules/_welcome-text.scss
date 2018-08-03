@@ -11,30 +11,28 @@
     margin: 0 auto;
 }
 
-#flip {
+.welcome--animation {
     height:5rem;
     overflow:hidden;
-}
 
-#flip > div > div {
-    color: $color-white;
-    height:4.5rem;
-    margin-bottom:4.5rem;
-    display:inline-block;
-}
-
-#flip div:first-child {
-    animation: show 5s linear infinite;
-}
-
-#flip div div {
-    color: $color-primary;
-}
-#flip div:first-child div {
-    color: $color-secondary;
-}
-#flip div:last-child div {
-    color: $color-quaternary;
+    & > div > div {
+        color: $color-white;
+        height:4.5rem;
+        margin-bottom:4.5rem;
+        display:inline-block;
+    }
+    & div:first-child {
+        animation: show 5s linear infinite;
+    }
+    & div div {
+        color: $color-tertiary;
+    }
+    & div:first-child div {
+        color: $color-secondary;
+    }
+    & div:last-child div {
+        color: $color-quaternary;
+    }
 }
 
 @keyframes show {
