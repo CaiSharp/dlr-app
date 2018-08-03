@@ -2,14 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
-import VideoBg from 'vue-videobg'
 import {routes} from "./js/routes";
 import {store} from "./store/store";
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
-
-Vue.component('video-bg', VideoBg);
 
 const router = new VueRouter({
     routes,
