@@ -1,7 +1,7 @@
 //TYPOGRAPHY
-@include font-face('Tajawal', '/../fonts/Tajawal/Tajawal-Light', 'lighter', 'normal', 'ttf');
-@include font-face('Tajawal', '/../fonts/Tajawal/Tajawal-Regular', 'normal', 'normal', 'ttf');
-@include font-face('Tajawal', '/../fonts/Tajawal/Tajawal-Bold', 'bold', 'normal', 'ttf');
+@include font-face('Tajawal', '/src/sass/fonts/Tajawal/Tajawal-Light', 'lighter', 'normal', 'ttf');
+@include font-face('Tajawal', '/src/sass/fonts/Tajawal/Tajawal-Regular', 'normal', 'normal', 'ttf');
+@include font-face('Tajawal', '/src/sass/fonts/Tajawal/Tajawal-Bold', 'bold', 'normal', 'ttf');
 
 
 #app{

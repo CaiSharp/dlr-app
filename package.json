@@ -9,7 +9,8 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "start": "concurrently \"npm run dev\" \"nodemon ./src/server\"",
-    "test": "browser-sync start --server --single"
+    "test": "browser-sync start --server --single",
+    "server": "nodemon ./src/server"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

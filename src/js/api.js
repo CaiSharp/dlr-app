@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 let macbookHOST = 'http://alexs-macbook-pro.local';
 let localHOST = 'http://localhost';
-let HOST = macbookHOST;
+let HOST = localHOST;
 
 export function getData(){
     return Vue.http.get(HOST+':3000/questions');
